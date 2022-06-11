@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package model;
+option go_package=".;model";
+
+message Book {
+	int64 id = 1;
+	string isbn = 2;
+	string author = 3;
+	string title = 4;
+}
+message GetBookRequest {
+	int64 id = 1;
+  }
+ message QueryBooksRequest {
+	string author_prefix = 1;
+ }
+  service BookService {
+	rpc GetBook(GetBookRequest) returns (Book) {}
+	rpc QueryBooks(QueryBooksRequest) returns (stream Book) {}
+  }

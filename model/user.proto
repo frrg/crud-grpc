@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package model;
+option go_package=".;model";
+
+message User {
+	int64 id = 1;
+	string name = 2;
+}
+message GetUserRequest {
+	int64 id = 1;
+  }
+ message QueryUsersRequest {
+	string name_prefix = 1;
+ }
+  service UserService {
+	rpc GetUser(GetUserRequest) returns (User) {}
+	rpc QueryUsers(QueryUsersRequest) returns (stream User) {}
+  }
