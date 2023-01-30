@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "./product_model";
+
+service ProductService {
+  rpc AddProduct (AddProductRequest) returns (AddProductResponse) {}
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse) {}
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse) {}
+}
+
+message AddProductRequest {
+  string name = 1;
+  float price = 2;
+}
+
+message AddProductResponse {
+  int64 id = 1;
+}
+
+message GetProductRequest {
+  int64 id = 1;
+}
+
+message GetProductResponse {
+  int64 id = 1;
+  string name = 2;
+  float price = 3;
+}
+
+message ListProductsResponse {
+  repeated GetProductResponse products = 1;
+}
+
+message ListProductsRequest {
+  int64 page_size = 1;
+  int64 page_token = 2;
+}

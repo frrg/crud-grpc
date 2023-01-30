@@ -1,8 +1,6 @@
 package main
 
 import (
-	model "crud-grpc/generated"
-	"crud-grpc/server"
 	"fmt"
 	"net/http"
 
@@ -25,10 +23,10 @@ func main() {
 		print(err)
 	}
 
-	bookServer := &server.BookServer{}
-	model.RegisterBookServiceServer(apiserver, bookServer)
-	userServer := &server.UserServer{}
-	model.RegisterUserServiceServer(apiserver, userServer)
+	// bookServer := &server.BookServer{}
+	// book_model.RegisterBookServiceServer(apiserver, bookServer)
+	// userServer := &server.UserServer{}
+	// user_server.RegisterUserServiceServer(apiserver, userServer)
 	// Start serving
 	wrappedGrpc := grpcweb.WrapServer(apiserver)
 	Handler := http.HandlerFunc(func(resp http.ResponseWriter, req *http.Request) {
